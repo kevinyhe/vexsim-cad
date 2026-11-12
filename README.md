@@ -1,11 +1,17 @@
 # vexsim-cad
 
-The Override field shapes vexsim needs, made from VEX's field CAD. They are
-made from VEX's CAD, so this repository is private and vexsim does not hold
-them.
+The Override field shapes vexsim needs, made from VEX's field CAD. Copy the
+four files into a vexsim checkout's `cad/override/` and vexsim and mclib's
+path planner can build the Override field, without downloading the CAD and
+running `tools/override_cad.py` (about 20 minutes):
 
-mclib's CI checks this out with a read-only deploy key and copies the four
-files into its vexsim checkout's `cad/override/`.
+```sh
+git clone https://github.com/kevinyhe/vexsim-cad
+mkdir -p vexsim/cad/override
+cp vexsim-cad/shapes.json vexsim-cad/field.json vexsim-cad/view.json vexsim-cad/view.bin vexsim/cad/override/
+```
+
+mclib's CI does the same.
 
 | File | What vexsim reads it for |
 | --- | --- |
@@ -15,6 +21,8 @@ files into its vexsim checkout's `cad/override/`.
 
 ## Where they come from
 
+- VEX's Override field CAD:
+  https://content.vexrobotics.com/docs/2026-2027/override/files/v5rc-override-fieldcad.zip
 - STEP file: `276-9250-000 (2026-04-26).STEP`, 131,867,705 bytes, sha256
   `3f24b7572d21195522ad44f265b358bc96d0f5767920cdc6fc817c2891477a1e`.
   It is the one file in VEX's `v5rc-override-fieldcad.zip` (sha256
